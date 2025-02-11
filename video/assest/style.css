@@ -1,5 +1,6 @@
 body{background-color: black;}
 .tv img{height: 860px; z-index: 1; position: relative ; z-index: auto; right: 8px; top: 20px;}
+.tv{max-width: 20px;}
 .time img{position: absolute; z-index: 10; left: 930px; top: 660px; height: 105px;}
 .video-contaier {
     position: relative;
@@ -25,21 +26,61 @@ body{background-color: black;}
           /* Video başlangıçta gizli olacak */
           #videoContainer {
             display: none;
-            position: fixed;
+            position: relative;
             top: 10%; /* Videoyu yukarıda başlat */
-            left: 50%;
+            left: 34.2%;
             transform: translateX(-50%);
             width: 80%; /* Genişliği ayarla */
-            max-width: 800px; /* Maksimum genişlik */
+            max-width: 900px; /* Maksimum genişlik */
             background: black;
             padding: 10px;
             border-radius: 10px;
             box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+            bottom: 810px;
         }
     
         /* Video boyutlandırma */
         #myVideo {
             width: 100%; /* Konteynırın genişliğini al */
             height: auto; /* Oranını koru */
-            max-height: 500px; /* Maksimum yükseklik */
+            max-height: 700px; /* Maksimum yükseklik */
         }
+
+
+         /* Ses kontrol butonları */
+    .volume-controls {
+        bottom: 721.1px;
+        left: 512px;
+        position: relative;
+        display: none; /* Başlangıçta gizli */
+    }
+
+    .volume-controls button {
+
+        font-size: 14px;
+        cursor: pointer;
+        border: 1px;
+        color: white;
+        border-radius: 25px;
+       
+        
+    }
+
+    /* Ses seviyesi göstergesi */
+    .volume-indicator {
+        margin-top: 10px;
+        font-size: 16px;
+        color: black;
+        bottom: 734px;
+        left: 450px;
+        position: relative;
+       display: none;
+    }
+
+    #volumeBar {
+        width: 100px;
+        height: 10px;
+        
+    }
+
+   

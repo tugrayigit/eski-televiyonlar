@@ -10,35 +10,62 @@
     <div class="tv"> <img src="images/tvbackclean.webp" alt=""> </div>
     <div class="time"> <img src="images/logoboxcreased.webp" alt=""> </div>
 
+    <button onclick="toggleVideo()" style="z-index: 1; position: relative; bottom: 162px; left: 719px; height: 30px; width: 30px; border: 1px; border-radius: 20px;"> </button>
 
-        <button onclick ="toggleVideo()">Videoyu Aç / Kapat  </button>
+    <div id="videoContainer">
+        <video id="myVideo">
+            <source src="images/Bow Wow, Jagged Edge - My Baby.mp4" type="video/mp4">
+        </video>
+    </div>
+    
+    <div class="volume-controls">
+        <button onclick="changeVolume(-0.1)">🔉</button>
+        <button onclick="changeVolume(0.1)">🔊</button>
+    </div>
 
-        <div id="videoContainer">
-            <video id="myVideo">
-                <source src="images/Bow Wow, Jagged Edge - My Baby.mp4" type="video/mp4">
-            </video>
-        </div>
-        
-       
-  
-        
-        <script>
-            function toggleVideo() {
-                var videoContainer = document.getElementById("videoContainer");
-                var video = document.getElementById("myVideo");
-        
-                if (videoContainer.style.display === "none") {
-                    videoContainer.style.display = "block"; // Video görünür olsun
-                    video.play(); // Videoyu başlat
-                } else {
-                    video.pause(); // Videoyu durdur
-                    video.currentTime = 0; // Videoyu başa sar
-                    videoContainer.style.display = "none"; // Videoyu gizle
-                }
+    <div id="volumeIndicator" class="volume-indicator">
+        Ses Seviyesi: <progress id="volumeBar" value="1" max="1"></progress> <span id="volumeText">100%</span>
+    </div>
+
+    <script>
+        function toggleVideo() {
+            var videoContainer = document.getElementById("videoContainer");
+            var video = document.getElementById("myVideo");
+            var volumeIndicator = document.getElementById("volumeIndicator");
+            var volumeControls = document.querySelector(".volume-controls");
+
+            if (videoContainer.style.display === "none" || videoContainer.style.display === "") {
+                videoContainer.style.display = "block"; // Video görünür olsun
+                volumeIndicator.style.display = "block"; // Ses göstergesini aç
+                volumeControls.style.display = "block";
+                video.play(); // Videoyu başlat
+            } else {
+                video.pause(); // Videoyu durdur
+                video.currentTime = 0; // Videoyu başa sar
+                videoContainer.style.display = "none"; // Videoyu gizle
+                volumeIndicator.style.display = "none"; // Ses göstergesini gizle
+                volumeControls.style.display = "none"; // Ses göstergesini aç
+                volumeControls.style.display = "none";
             }
-        </script>
-        
-        
+        }
 
+        function changeVolume(amount) {
+            var video = document.getElementById("myVideo");
+            var volumeBar = document.getElementById("volumeBar");
+            var volumeText = document.getElementById("volumeText");
+
+            var newVolume = video.volume + amount;
+
+            if (newVolume > 1) {
+                newVolume = 1; // Maksimum ses
+            } else if (newVolume < 0) {
+                newVolume = 0; // Sesi tamamen kapat
+            }
+
+            video.volume = newVolume;
+            volumeBar.value = newVolume;
+            volumeText.innerText = Math.round(newVolume * 100) + "%"; // Yüzde olarak göster
+        }
+    </script>
 </body>
 </html>
