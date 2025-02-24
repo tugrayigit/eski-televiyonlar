@@ -10,7 +10,6 @@
     <div class="tv"> <img src="images/tvbackclean.webp" alt=""> </div>
     <div class="time"> <img src="images/logoboxcreased.webp" alt=""> </div>
 
-<<<<<<< Updated upstream
     <button onclick="toggleVideo()" style="z-index: 1; position: relative; bottom: 162px; left: 719px; height: 30px; width: 30px; border: 1px; border-radius: 20px;"> </button>
 
     <div id="videoContainer">
@@ -18,18 +17,6 @@
             <source src="images/Bow Wow, Jagged Edge - My Baby.mp4" type="video/mp4">
         </video>
     </div>
-=======
-    <!-- Toggle Video Button -->
-    <button onclick="toggleVideo()" style="z-index: 1; position: relative; bottom: 162px; left: 719px; height: 30px; width: 30px; border: 1px; border-radius: 20px;"> </button>
-
-    <div id="videoContainer" style="display: none;">
-        <!-- Video with no controls -->
-        <video id="myVideo" margin-width="600" margin-height="400" autoplay>
-            <source src="images/Bow Wow, Jagged Edge - My Baby.mp4" type="video/mp4">
-        </video>
-    </div>
-    <div class="led-green" id="tvled" style="opacity: 0;"></div>
->>>>>>> Stashed changes
     
     <div class="volume-controls">
         <button onclick="changeVolume(-0.1)">🔉</button>
@@ -37,7 +24,8 @@
     </div>
 
     <div id="volumeIndicator" class="volume-indicator">
-        Ses Seviyesi: <progress id="volumeBar" value="1" max="1"></progress> <span id="volumeText">100%</span>
+        Ses Seviyesi: <progress id="volumeBar" value="1" max="1"></progress>
+        <span id="volumeText">100%</span>
     </div>
 
     <script>
@@ -47,30 +35,18 @@
             var volumeIndicator = document.getElementById("volumeIndicator");
             var volumeControls = document.querySelector(".volume-controls");
 
-<<<<<<< Updated upstream
-=======
-            // Eğer video gizliyse, göster
->>>>>>> Stashed changes
             if (videoContainer.style.display === "none" || videoContainer.style.display === "") {
                 videoContainer.style.display = "block"; // Video görünür olsun
                 volumeIndicator.style.display = "block"; // Ses göstergesini aç
                 volumeControls.style.display = "block";
                 video.play(); // Videoyu başlat
             } else {
-<<<<<<< Updated upstream
-=======
-                // Videoyu durdurma butonu kaldırılmıştır
->>>>>>> Stashed changes
                 video.pause(); // Videoyu durdur
                 video.currentTime = 0; // Videoyu başa sar
                 videoContainer.style.display = "none"; // Videoyu gizle
                 volumeIndicator.style.display = "none"; // Ses göstergesini gizle
-<<<<<<< Updated upstream
                 volumeControls.style.display = "none"; // Ses göstergesini aç
                 volumeControls.style.display = "none";
-=======
-                volumeControls.style.display = "none"; // Ses göstergesini gizle
->>>>>>> Stashed changes
             }
         }
 
@@ -92,49 +68,8 @@
             volumeText.innerText = Math.round(newVolume * 100) + "%"; // Yüzde olarak göster
         }
     </script>
-<<<<<<< Updated upstream
-=======
-
-    <script>
-       document.addEventListener('keydown', function(event) {
-            // F tuşuna basıldığında tam ekran yapmak
-            if (event.key === 'F' || event.key === 'f') {
-                toggleFullScreen();
-            }
-        });
-
-        function toggleFullScreen() {
-            var videoElement = document.querySelector('video'); // İlk video elementini seç
-
-            if (!document.fullscreenElement &&    // Eğer şu anda tam ekran değilse
-                !document.mozFullScreenElement && // Firefox için
-                !document.webkitFullscreenElement && // Chrome ve Safari için
-                !document.msFullscreenElement) {  // IE/Edge için
-                if (videoElement.requestFullscreen) {
-                    videoElement.requestFullscreen(); // Videoyu tam ekran yap
-                } else if (videoElement.mozRequestFullScreen) { // Firefox
-                    videoElement.mozRequestFullScreen();
-                } else if (videoElement.webkitRequestFullscreen) { // Chrome ve Safari
-                    videoElement.webkitRequestFullscreen();
-                } else if (videoElement.msRequestFullscreen) { // IE/Edge
-                    videoElement.msRequestFullscreen();
-                }
-            } else {
-                // Tam ekrandan çıkmak
-                if (document.exitFullscreen) {
-                    document.exitFullscreen();
-                } else if (document.mozCancelFullScreen) { // Firefox
-                    document.mozCancelFullScreen();
-                } else if (document.webkitExitFullscreen) { // Chrome ve Safari
-                    document.webkitExitFullscreen();
-                } else if (document.msExitFullscreen) { // IE/Edge
-                    document.msExitFullscreen();
-                }
-            }
-        }
-    </script>
-    
-     <div id="tvbuttons" class="tvremotebackground">
+     
+    <div id="tvbuttons" class="tvremotebackground">
         <ul>
             <li>
                 <button class="tvremote" style="color: rgb(0, 255, 0);" onclick="toggleVideo()">POWER</button>
@@ -153,6 +88,5 @@
             </li>
         </ul>
     </div>
->>>>>>> Stashed changes
 </body>
 </html>

@@ -82,5 +82,66 @@ body{background-color: black;}
         height: 10px;
         
     }
+<<<<<<< Updated upstream
 
    
+=======
+    #remotestatus {
+        width: 270px;
+        height: 28px;
+        top: 552px;
+        font-family: "blippo",monospace;
+        color: #0f0;
+        text-align: left;
+        font-size: 14px;
+        line-height: 14px
+    }
+    
+    #remotestatus,#tvbuttons {
+        position: absolute;
+        z-index: 10;
+        left: 832px
+    }
+    
+    #tvbuttons {
+        top: 600px;
+        line-height: 30px;
+        margin-bottom: 0;
+        margin-left: 400px;
+    }
+    .tvremotebackground {
+        border: 3px solid #3d3b3b;
+        border-radius: 10px;
+        background-image: linear-gradient(90deg,#7d7d7d,#3f3838 49%,#afafaf);
+        position: absolute;
+        box-shadow: 10px 10px 5px rgba(0,0,0,.5);
+        width: 120px;
+        height: 200px
+    }
+    button.tvremote {
+        font-family: Arial,Helvetica,sans-serif;
+        font-size: 14px;
+        color: #000;
+        width: 100px;
+        height: 18px;
+        background-color: #707070;
+        outline: none;
+        border-radius: 30px;
+        border: 1px solid #000;
+        box-shadow: 0 1px 3px rgba(0,0,0,.5),inset 0 0 1px hsla(0,0%,100%,.7);
+        text-shadow: 0 -1px 0 rgba(0,0,0,.4),0 1px 0 hsla(0,0%,100%,.3);
+        position: inherit;
+        cursor: pointer;
+        overflow: visible;
+        padding: 0
+    }
+    ul {
+        list-style-type: none;
+        padding: 0 0 0 6px;
+        margin: 0
+    }
+    
+    ul li {
+        padding: 3px
+    }
+>>>>>>> Stashed changes
