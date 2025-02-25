@@ -92,15 +92,15 @@ body{background-color: black;}
 }
 @media  (max-width: 425px) {
     #videoContainer {
-        left: 19.75%!important; width: 26%!important;
+        left: 18%!important; width: 26%!important;
     }
 }
 @media (max-width: 375px) {
     #videoContainer {
-        left: 20.85%!important; width: 26%!important;
+        left: 20%!important; width: 26%!important;
     }
 }
-@media (max-width: 375px) {
+@media (max-width: 320px) {
     #videoContainer {
         left: 23.5%!important; width: 26%!important;
     }
