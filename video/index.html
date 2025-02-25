@@ -8,8 +8,9 @@
 </head>
 <body>
     <div class="tv"> <img src="images/tvbackclean.webp" alt=""> </div>
+    <div class="time"> <img src="images/logoboxcreased.webp" alt=""> </div>
 
-    <button onclick="toggleVideo()" style="z-index: 1; position: relative; bottom: 162px; left: 719px; height: 30px; width: 30px; border: 1px; border-radius: 20px;"> </button>
+    <button onclick="toggleVideo()" style="z-index: 1; position: relative; top: 469.5px; left: 479.8px; height: 24px; width: 24px; border: 1px; border-radius: 20px;"> </button>
 
     <div id="videoContainer">
         <video id="myVideo">
@@ -17,106 +18,31 @@
         </video>
     </div>
     
-    <div class="volume-controls">
-        <button onclick="changeVolume(-0.1)">🔉</button>
-        <button onclick="changeVolume(0.1)">🔊</button>
+  
+
+<div class="container">
+    <div class="menu">
+
     </div>
+</div>
 
-    <div id="volumeIndicator" class="volume-indicator">
-        Ses Seviyesi: <progress id="volumeBar" value="1" max="1"></progress>
-        <span id="volumeText">100%</span>
-    </div>
-
-    <div id="tvbuttons" class="tvremotebackground">
-        <ul>
-            <li>
-                <button class="tvremote" style="color: rgb(0, 255, 0);" onclick="toggleVideo()">POWER</button>
-            </li>
-            <li>
-                <button id="btn_next" type="button" name="" value="" class="tvremote tvremotebutton-on" style="color: rgb(0, 0, 0);">KANAL ▲</button>
-            </li>
-            <li>
-                <button id="btn_prev" type="button" name="" value="" class="tvremote tvremotebutton-on" style="color: rgb(0, 0, 0);">KANAL ▼</button>
-            </li>
-            <li>
-                <button class="tvremote" onclick="changeVolume(0.1)">SES +</button>
-            </li>
-            <li>
-                <button  class="tvremote" onclick="changeVolume(-0.1)">SES -</button>
-            </li>
-        </ul>
-    </div>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-
-     <script>
-        document.addEventListener('keydown', function(event) {
-             // F tuşuna basıldığında tam ekran yapmak
-             
-             if (event.key === 'F' || event.key === 'f') {
-                 toggleFullScreen();
-             }
-         });
-
-      
- 
-         function toggleFullScreen() {
-             var videoElement = document.querySelector('video'); // İlk video elementini seç
- 
-             if (!document.fullscreenElement &&    // Eğer şu anda tam ekran değilse
-                 !document.mozFullScreenElement && // Firefox için
-                 !document.webkitFullscreenElement && // Chrome ve Safari için
-                 !document.msFullscreenElement) {  // IE/Edge için
-                 if (videoElement.requestFullscreen) {
-                     videoElement.requestFullscreen(); // Videoyu tam ekran yap
-                 } else if (videoElement.mozRequestFullScreen) { // Firefox
-                     videoElement.mozRequestFullScreen();
-                 } else if (videoElement.webkitRequestFullscreen) { // Chrome ve Safari
-                     videoElement.webkitRequestFullscreen();
-                 } else if (videoElement.msRequestFullscreen) { // IE/Edge
-                     videoElement.msRequestFullscreen();
-                 }
-             } else {
-                 // Tam ekrandan çıkmak
-                 if (document.exitFullscreen) {
-                     document.exitFullscreen();
-                 } else if (document.mozCancelFullScreen) { // Firefox
-                     document.mozCancelFullScreen();
-                 } else if (document.webkitExitFullscreen) { // Chrome ve Safari
-                     document.webkitExitFullscreen();
-                 } else if (document.msExitFullscreen) { // IE/Edge
-                     document.msExitFullscreen();
-                 }
-             }
-         }
-
-
-         function toggleVideo() {
+    <script>
+        function toggleVideo() {
             var videoContainer = document.getElementById("videoContainer");
             var video = document.getElementById("myVideo");
-            var volumeIndicator = document.getElementById("volumeIndicator");
-            var volumeControls = document.querySelector(".volume-controls");
 
-            // Eğer video gizliyse, göster
 
             if (videoContainer.style.display === "none" || videoContainer.style.display === "") {
                 videoContainer.style.display = "block"; // Video görünür olsun
-                volumeIndicator.style.display = "block"; // Ses göstergesini aç
-                volumeControls.style.display = "block";
+
                 video.play(); // Videoyu başlat
             } else {
-
-                // Videoyu durdurma butonu kaldırılmıştır
-
                 video.pause(); // Videoyu durdur
                 video.currentTime = 0; // Videoyu başa sar
                 videoContainer.style.display = "none"; // Videoyu gizle
                 volumeIndicator.style.display = "none"; // Ses göstergesini gizle
-
                 volumeControls.style.display = "none"; // Ses göstergesini aç
                 volumeControls.style.display = "none";
-
-                volumeControls.style.display = "none"; // Ses göstergesini gizle
-
             }
         }
 
@@ -137,7 +63,6 @@
             volumeBar.value = newVolume;
             volumeText.innerText = Math.round(newVolume * 100) + "%"; // Yüzde olarak göster
         }
-
-     </script>
+    </script>
 </body>
 </html>
