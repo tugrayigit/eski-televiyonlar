@@ -8,9 +8,8 @@
 </head>
 <body>
     <div class="tv"> <img src="images/tvbackclean.webp" alt=""> </div>
-    <div class="time"> <img src="images/logoboxcreased.webp" alt=""> </div>
 
-    <button onclick="toggleVideo()" style="z-index: 1; position: relative; top: 469.5px; left: 479.8px; height: 24px; width: 24px; border: 1px; border-radius: 20px;"> </button>
+    <button onclick="toggleVideo()" style="z-index: 1; position: relative; left: 720px; height: 28px; width: 29px; border: 1px; border-radius: 20px; bottom: 162px;"> </button>
 
     <div id="videoContainer">
         <video id="myVideo">
@@ -18,8 +17,6 @@
         </video>
     </div>
     
-  
-
 <div class="container">
     <div class="menu">
 
@@ -27,6 +24,50 @@
 </div>
 
     <script>
+        document.addEventListener('keydown', function(event) {
+             // F tuşuna basıldığında tam ekran yapmak
+             
+             if (event.key === 'F' || event.key === 'f') {
+                 toggleFullScreen();
+             }
+         });
+
+      
+ 
+         function toggleFullScreen() {
+             var videoElement = document.querySelector('video'); // İlk video elementini seç
+ 
+             if (!document.fullscreenElement &&    // Eğer şu anda tam ekran değilse
+                 !document.mozFullScreenElement && // Firefox için
+                 !document.webkitFullscreenElement && // Chrome ve Safari için
+                 !document.msFullscreenElement) {  // IE/Edge için
+                 if (videoElement.requestFullscreen) {
+                     videoElement.requestFullscreen(); // Videoyu tam ekran yap
+                 } else if (videoElement.mozRequestFullScreen) { // Firefox
+                     videoElement.mozRequestFullScreen();
+                 } else if (videoElement.webkitRequestFullscreen) { // Chrome ve Safari
+                     videoElement.webkitRequestFullscreen();
+                 } else if (videoElement.msRequestFullscreen) { // IE/Edge
+                     videoElement.msRequestFullscreen();
+                 }
+             } else {
+                 // Tam ekrandan çıkmak
+                 if (document.exitFullscreen) {
+                     document.exitFullscreen();
+                 } else if (document.mozCancelFullScreen) { // Firefox
+                     document.mozCancelFullScreen();
+                 } else if (document.webkitExitFullscreen) { // Chrome ve Safari
+                     document.webkitExitFullscreen();
+                 } else if (document.msExitFullscreen) { // IE/Edge
+                     document.msExitFullscreen();
+                 }
+             }
+         }
+
+
+
+         
+
         function toggleVideo() {
             var videoContainer = document.getElementById("videoContainer");
             var video = document.getElementById("myVideo");
@@ -64,6 +105,5 @@
             volumeText.innerText = Math.round(newVolume * 100) + "%"; // Yüzde olarak göster
         }
     </script>
-    
 </body>
 </html>
