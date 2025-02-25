@@ -7,9 +7,11 @@
     <link rel="stylesheet" href="assest/style.css">
 </head>
 <body>
-    <div class="tv"> <img src="images/tvbackclean.webp" alt=""> </div>
+    <div class="tv">
+        <img src="images/tvbackclean.webp" alt="">
+    </div>
 
-    <button onclick="toggleVideo()" style="z-index: 1; position: relative; bottom: 162px; left: 719px; height: 30px; width: 30px; border: 1px; border-radius: 20px;"> </button>
+    <button onclick="toggleVideo()" style="z-index: 1; position: relative; bottom: 162px; left: 719px; height: 30px; width: 30px; border: 1px; border-radius: 20px;"></button>
 
     <div id="videoContainer">
         <video id="myVideo">
@@ -44,6 +46,9 @@
             <li>
                 <button  class="tvremote" onclick="changeVolume(-0.1)">SES -</button>
             </li>
+            <li>
+                <button id="myVideo" class="tvremote" onclick="pause()">Durdur / Oynat</button>
+            </li>
         </ul>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
@@ -57,7 +62,23 @@
              }
          });
 
-      
+         $("video").click(function() {
+    var video = $("#myVideo").get(0);
+
+    if ( video.paused ) {
+        video.play();
+        $(".play").hide();
+        $(".pause").show();
+    }
+    
+    else {
+        video.pause();
+        $(".play").show();
+        $(".pause").hide();
+    }
+
+    return false;
+});
  
          function toggleFullScreen() {
              var videoElement = document.querySelector('video'); // İlk video elementini seç
@@ -66,36 +87,48 @@
                  !document.mozFullScreenElement && // Firefox için
                  !document.webkitFullscreenElement && // Chrome ve Safari için
                  !document.msFullscreenElement) {  // IE/Edge için
-                 if (videoElement.requestFullscreen) {
+                 
+                if (videoElement.requestFullscreen) {
                      videoElement.requestFullscreen(); // Videoyu tam ekran yap
-                 } else if (videoElement.mozRequestFullScreen) { // Firefox
+                }
+
+                else if (videoElement.mozRequestFullScreen) { // Firefox
                      videoElement.mozRequestFullScreen();
-                 } else if (videoElement.webkitRequestFullscreen) { // Chrome ve Safari
+                }
+
+                else if (videoElement.webkitRequestFullscreen) { // Chrome ve Safari
                      videoElement.webkitRequestFullscreen();
-                 } else if (videoElement.msRequestFullscreen) { // IE/Edge
+                }
+
+                else if (videoElement.msRequestFullscreen) { // IE/Edge
                      videoElement.msRequestFullscreen();
-                 }
-             } else {
+                }
+             }
+            else {
                  // Tam ekrandan çıkmak
                  if (document.exitFullscreen) {
                      document.exitFullscreen();
-                 } else if (document.mozCancelFullScreen) { // Firefox
+                }
+
+                else if (document.mozCancelFullScreen) { // Firefox
                      document.mozCancelFullScreen();
-                 } else if (document.webkitExitFullscreen) { // Chrome ve Safari
+                }
+
+                else if (document.webkitExitFullscreen) { // Chrome ve Safari
                      document.webkitExitFullscreen();
-                 } else if (document.msExitFullscreen) { // IE/Edge
+                }
+
+                else if (document.msExitFullscreen) { // IE/Edge
                      document.msExitFullscreen();
-                 }
+                }
              }
          }
-
 
          function toggleVideo() {
             var videoContainer = document.getElementById("videoContainer");
             var video = document.getElementById("myVideo");
             var volumeIndicator = document.getElementById("volumeIndicator");
             var volumeControls = document.querySelector(".volume-controls");
-
             // Eğer video gizliyse, göster
 
             if (videoContainer.style.display === "none" || videoContainer.style.display === "") {
@@ -103,20 +136,17 @@
                 volumeIndicator.style.display = "block"; // Ses göstergesini aç
                 volumeControls.style.display = "block";
                 video.play(); // Videoyu başlat
-            } else {
+            }
 
+            else {
                 // Videoyu durdurma butonu kaldırılmıştır
-
                 video.pause(); // Videoyu durdur
                 video.currentTime = 0; // Videoyu başa sar
                 videoContainer.style.display = "none"; // Videoyu gizle
                 volumeIndicator.style.display = "none"; // Ses göstergesini gizle
-
                 volumeControls.style.display = "none"; // Ses göstergesini aç
                 volumeControls.style.display = "none";
-
                 volumeControls.style.display = "none"; // Ses göstergesini gizle
-
             }
         }
 
@@ -124,12 +154,13 @@
             var video = document.getElementById("myVideo");
             var volumeBar = document.getElementById("volumeBar");
             var volumeText = document.getElementById("volumeText");
-
             var newVolume = video.volume + amount;
-
+           
             if (newVolume > 1) {
                 newVolume = 1; // Maksimum ses
-            } else if (newVolume < 0) {
+            }
+
+            else if (newVolume < 0) {
                 newVolume = 0; // Sesi tamamen kapat
             }
 
