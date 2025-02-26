@@ -1,6 +1,16 @@
         body{
             background-color: black;
         }
+        .powerbutton{
+            z-index: 1; 
+            position: relative; 
+            left: 720px; 
+            height: 28px; 
+            width: 29px; 
+            border: 1px; 
+            border-radius: 20px; 
+            bottom: 162px;
+        }
         .tv img{
             height: 860px; 
             z-index: 1; 
@@ -140,15 +150,6 @@
         width: 1000px!important;
     }
 }
-@media (max-width: 375px) {
-    #videoContainer {
-        left: 605px !important; 
-        width: 1000px !important;
-    }
-}
-
-
-
 
 #remotestatus {
     width: 270px;
@@ -184,10 +185,10 @@
 }
 button.tvremote {
     font-family: Arial,Helvetica,sans-serif;
-    font-size: 14px;
+    font-size: 30px;
     color: #000;
-    width: 100px;
-    height: 18px;
+    width: 275px;
+    height: 36px;
     background-color: #707070;
     outline: none;
     border-radius: 30px;
@@ -204,9 +205,75 @@ ul {
     padding: 0 0 0 6px;
     margin: 0
 }
-
 ul li {
-    padding: 3px
+    padding: 10px
+}
+/* televizyon boyutu */
+@media (min-width: 2540px) {
+    .tv img {
+        height: 1350px;
+        z-index: 1;
+        position: relative;
+        z-index: auto;
+        right: 8px;
+        top: 20px;
+    }
+}
+/* power button yer değişiklik */
+@media (min-width: 2540px) {
+    .powerbutton {
+        left: 720px;
+    height: 28px;
+    width: 29px;
+        
+    }
+}
+
+
+/* kumanda için konumlandır ma */
+
+@media (min-width: 2540px) {
+    #tvbuttons {
+        top: 800px;
+        margin-left: 1100px;
+        height: 395px;
+        width: 326px !important;
+        /* OLMUYOR !!!!!! */
+    }
+}
+
+@media  (max-width: 1440px) {
+    #tvbuttons {
+        top: 500px;
+        height: 300px;
+        width: 200px !important;
+    }
+}
+
+@media (max-width: 1024px) {
+    #tvbuttons {
+        top: 500px;
+        height: 300px;
+        width: 200px !important;
+    }
+}
+
+@media  (max-width: 768px) {
+    #tvbuttons {
+        top: 500px;
+        height: 300px;
+        width: 200px !important;
+    }
+}
+
+@media  (max-width: 425px) {
+    #tvbuttons {
+        left: 50px !important; 
+        margin-left: 0px !important;
+        margin-top: 300px !important;
+        width: 300px;
+        height: 300px;
+    }
 }
 
 @media (max-width: 375px) {
@@ -216,5 +283,20 @@ ul li {
        margin-top: 300px !important;
        width: 300px;
        height: 300px;
+    }
+}
+
+/* kumanda buonların büyüklüyü */
+
+
+
+
+
+@media (max-width: 375px) {
+    .tvremote {
+           font-size: 30px;
+    color: #000;
+    width: 275px;
+    height: 36px;
     }
 }

@@ -4,12 +4,315 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MyRetroTV</title>
-    <link rel="stylesheet" href="assest/style.css">
+    <style>
+                body{
+            background-color: black;
+        }
+        .powerbutton{
+            z-index: 1; 
+            position: relative; 
+            left: 720px; 
+            height: 28px; 
+            width: 29px; 
+            border: 1px; 
+            border-radius: 20px; 
+            bottom: 162px;
+        }
+        .tv img{
+            height: 860px; 
+            z-index: 1; 
+            position: relative ; 
+            z-index: auto; 
+            right: 8px; 
+            top: 20px;
+        }
+        .tv{
+            max-width: 20px;
+        }
+        .time img{
+            position: absolute; 
+            z-index: 10; 
+            left: 930px; 
+            top: 660px; 
+            height: 105px;
+        }
+        .video-contaier {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 oranı */
+            height: 0;
+            overflow: hidden;
+            max-width: 100%;
+            max-width: 930px;
+            bottom: 1010px;
+            left: 145px;
+            z-index: auto;
+        }
+
+        .video-contaier video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+
+          /* Video başlangıçta gizli olacak */
+          #videoContainer {
+            display: none;
+            position: relative;
+            top: 10%; /* Videoyu yukarıda başlat */
+            left: 608px;
+            transform: translateX(-50%);
+            width: 80%; /* Genişliği ayarla */
+            max-width: 900px; /* Maksimum genişlik */
+            background: black;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+            bottom: 810px;
+        }
+    
+        /* Video boyutlandırma */
+        #myVideo {
+            width: 100%; /* Konteynırın genişliğini al */
+            height: auto; /* Oranını koru */
+            max-height: 700px; /* Maksimum yükseklik */
+        }
+
+
+         /* Ses kontrol butonları */
+    .volume-controls {
+        bottom: 721.1px;
+        left: 512px;
+        position: relative;
+        display: none; /* Başlangıçta gizli */
+    }
+
+    .volume-controls button {
+
+        font-size: 14px;
+        cursor: pointer;
+        border: 1px;
+        color: white;
+        border-radius: 25px;
+       
+        
+    }
+
+    /* Ses seviyesi göstergesi */
+    .volume-indicator {
+        margin-top: 10px;
+        font-size: 16px;
+        color: black;
+        bottom: 734px;
+        left: 450px;
+        position: relative;
+       display: none;
+    }
+
+    #volumeBar {
+        width: 100px;
+        height: 10px;
+        
+    }
+
+    .menu{border: 2px;}
+
+
+
+   @media (min-width: 2540px) {
+    #videoContainer {
+        left: 605px!important; 
+        width: 1000px!important;
+    }
+}
+@media  (max-width: 1440px) {
+    #videoContainer {
+        left: 605px!important; 
+        width: 1000px!important;
+    }
+}
+@media (max-width: 1024px) {
+    #videoContainer {
+        left: 605px!important; 
+        width: 1000px!important;
+    }
+}
+@media  (max-width: 768px) {
+    #videoContainer {
+        left: 605px!important; 
+        width: 1000px!important;
+    }
+}
+@media  (max-width: 425px) {
+    #videoContainer {
+        left: 605px!important; 
+        width: 1000px!important;
+    }
+}
+@media (max-width: 375px) {
+    #videoContainer {
+        left: 605px!important; 
+        width: 1000px!important;
+    }
+}
+
+#remotestatus {
+    width: 270px;
+    height: 28px;
+    top: 552px;
+    font-family: "blippo",monospace;
+    color: #0f0;
+    text-align: left;
+    font-size: 14px;
+    line-height: 14px
+}
+
+#remotestatus,#tvbuttons {
+    position: absolute;
+    z-index: 10;
+    left: 832px
+}
+
+#tvbuttons {
+    top: 600px;
+    line-height: 30px;
+    margin-bottom: 0;
+    margin-left: 400px;
+}
+.tvremotebackground {
+    border: 3px solid #3d3b3b;
+    border-radius: 10px;
+    background-image: linear-gradient(90deg,#7d7d7d,#3f3838 49%,#afafaf);
+    position: absolute;
+    box-shadow: 10px 10px 5px rgba(0,0,0,.5);
+    width: 120px;
+    height: 200px
+}
+button.tvremote {
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 30px;
+    color: #000;
+    width: 275px;
+    height: 36px;
+    background-color: #707070;
+    outline: none;
+    border-radius: 30px;
+    border: 1px solid #000;
+    box-shadow: 0 1px 3px rgba(0,0,0,.5),inset 0 0 1px hsla(0,0%,100%,.7);
+    text-shadow: 0 -1px 0 rgba(0,0,0,.4),0 1px 0 hsla(0,0%,100%,.3);
+    position: inherit;
+    cursor: pointer;
+    overflow: visible;
+    padding: 0
+}
+ul {
+    list-style-type: none;
+    padding: 0 0 0 6px;
+    margin: 0
+}
+ul li {
+    padding: 10px
+}
+/* televizyon boyutu */
+@media (min-width: 2540px) {
+    .tv img {
+        height: 1350px;
+        z-index: 1;
+        position: relative;
+        z-index: auto;
+        right: 8px;
+        top: 20px;
+    }
+}
+/* power button yer değişiklik */
+@media (min-width: 2540px) {
+    .powerbutton {
+        left: 720px;
+    height: 28px;
+    width: 29px;
+        
+    }
+}
+
+
+/* kumanda için konumlandır ma */
+
+@media (min-width: 2540px) {
+    #tvbuttons {
+        top: 800px;
+        margin-left: 1100px;
+        height: 395px;
+        width: 326px !important;
+        /* OLMUYOR !!!!!! */
+    }
+}
+
+@media  (max-width: 1440px) {
+    #tvbuttons {
+        top: 500px;
+        height: 300px;
+        width: 200px !important;
+    }
+}
+
+@media (max-width: 1024px) {
+    #tvbuttons {
+        top: 500px;
+        height: 300px;
+        width: 200px !important;
+    }
+}
+
+@media  (max-width: 768px) {
+    #tvbuttons {
+        top: 500px;
+        height: 300px;
+        width: 200px !important;
+    }
+}
+
+@media  (max-width: 425px) {
+    #tvbuttons {
+        left: 50px !important; 
+        margin-left: 0px !important;
+        margin-top: 300px !important;
+        width: 300px;
+        height: 300px;
+    }
+}
+
+@media (max-width: 375px) {
+    #tvbuttons {
+       left: 50px !important; 
+       margin-left: 0px !important;
+       margin-top: 300px !important;
+       width: 300px;
+       height: 300px;
+    }
+}
+
+/* kumanda buonların büyüklüyü */
+
+
+
+
+
+@media (max-width: 375px) {
+    .tvremote {
+           font-size: 30px;
+    color: #000;
+    width: 275px;
+    height: 36px;
+    }
+}
+    </style>
 </head>
 <body>
     <div class="tv"> <img src="images/tvbackclean.webp" alt=""> </div>
 
-    <button onclick="toggleVideo()" style="z-index: 1; position: relative; left: 720px; height: 28px; width: 29px; border: 1px; border-radius: 20px; bottom: 162px;"> </button>
+    <button class="powerbutton" onclick="toggleVideo()"> </button>
 
     <div id="videoContainer">
         <video id="myVideo">
